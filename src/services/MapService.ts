@@ -4,9 +4,6 @@ import {IsochroneRequest} from "../types/Isochrone";
 class MapService {
     async isochroneInformation(body: IsochroneRequest, profile: string): Promise<any> {
         try {
-            console.log("###############");
-            console.log(body);
-            console.log(BACKEND_ENDPOINT + '/v2/isochrones/' + profile);
             const response = await fetch(BACKEND_ENDPOINT + '/v2/isochrones/' + profile, {
                 method: 'POST',
                 headers: {
@@ -14,7 +11,6 @@ class MapService {
                 },
                 body: JSON.stringify(body),
             });
-            console.log(response);
             // Check if the request was successful (status code 2xx)
             if (response.ok) {
                 return await response.json(); // You can modify this based on your needs
